@@ -5,52 +5,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
+    <link rel="stylesheet" href="~/lib/chartjs/Chart.css" />
 </head>
 <body class="with-welcome-text">
 
     <div class="container-scroller d-flex flex-column">
 
-        <!-- partial:partials/_navbar.html -->
-        <nav class="navbar default-layout  d-flex align-items-top flex-row">
-            
-            <div class="navbar-menu-wrapper d-flex align-items-top">
-                        <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
-            </div>
-        </nav>
-        <!-- partial -->
+        
         <div class="container-fluid page-body-wrapper row col-lg-12">
             <!-- partial:partials/_sidebar.html -->
-            <nav class="side-panel col-lg-2 d-flex flex-column">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Admin/Teams">
-                            <i class="mdi mdi-grid-large menu-Ticon"></i>
-                            <span class="menu-title">Teams</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Admin/Donors">
-                            <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">Donors</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Admin/Events">
-                            <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">Events</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Admin/Staff">
-                            <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">Staff</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            
+                   
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto aos-init aos-animate" data-aos="fade-right" data-aos-delay="1100">
+                    <a class="btn btn-primary active" href="/Staff/Admin_main">
+                        Home
+                    </a>
+                </div>
+                <div class="col-auto aos-init aos-animate" data-aos="fade-left" data-aos-delay="1100">
+                    <a href="./Donors" class="btn btn-secondary d-none d-md-inline-block me-sm-20 fw-5 link-light-1">Donors</a>
+
+                    <a href="./Teams" class="btn btn-secondary d-none d-md-inline-block me-sm-20 fw-5 link-light-1">Teams</a>
+
+                    <a href="./Events" class="btn btn-secondary d-none d-md-inline-block me-sm-20 fw-5 link-light-1">Events</a>
+
+                    <a href="./Staff" class="btn btn-secondary d-none d-md-inline-block me-sm-20 fw-5 link-light-1">Staff</a>
+                </div>
+            </div>
+            <br />
+
             <!-- partial -->
-            <div class="main-panel col-lg-10 d-flex flex-column">
+            <div class="main-panel col-lg-12 d-flex flex-column">
                 <div class="content-wrapper">
                     <div class="row">
                         <div class="col-sm-12">
@@ -76,7 +61,41 @@
                                                                     <div id="performanceLine-legend"></div>
                                                                 </div>
                                                                 <div class="chartjs-wrapper mt-4">
-                                                                    <canvas id="performanceLine" width=""></canvas>
+                                                                    <div class="chart-container" width="600" height="400">
+                                                                        <canvas id="barChart1"></canvas>
+                                                                    </div>
+                                                                    <script type="module">
+                                                                        document.addEventListener('DOMContentLoaded', (event) => {
+
+                                                                            var ctx = document.getElementById('barChart1');
+                                                                            var myChart = new Chart(ctx, @Html.Raw(Model.ChartJson) );
+
+                                                                        });
+                                                                    </script>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="card card-rounded">
+                                                            <div class="card-body">
+                                                                <div class="d-sm-flex justify-content-between align-items-start">
+                                                                    <div>
+                                                                        <h4 class="card-title card-title-dash">Performance Line Chart</h4>
+                                                                        <h5 class="card-subtitle card-subtitle-dash">Lorem Ipsum is simply dummy text of the printing</h5>
+                                                                    </div>
+                                                                    <div id="performanceLine-legend"></div>
+                                                                </div>
+                                                                <div class="chartjs-wrapper mt-4">
+                                                                    <div class="chart-container" width="600" height="400">
+                                                                        <canvas id="barChart2"></canvas>
+                                                                    </div>
+                                                                    <script type="module">
+                                                                        document.addEventListener('DOMContentLoaded', (event) => {
+
+                                                                            var ctx = document.getElementById('barChart2');
+                                                                            var myChart = new Chart(ctx, @Html.Raw(Model.ChartJson) );
+
+                                                                        });
+                                                                    </script>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -149,4 +168,9 @@
         <!-- page-body-wrapper ends -->
     </div>
 </body>
+<script type="module" src="~/lib/chartjs/chart.umd.js">
+        import { Collapse, initMDB } from "mdb-ui-kit";
+
+    initMDB({ Collapse });
+</script>
 </html>

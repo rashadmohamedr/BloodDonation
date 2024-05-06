@@ -5,144 +5,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <link rel="stylesheet" href="~/lib/chartjs/Chart.css" />
+    <style>
+        .table {
+            max-width: none;
+            table-layout: fixed;
+            word-wrap: break-word;
+        }
+    </style>
 </head>
 <body class="with-welcome-text">
 
     <div class="container-scroller d-flex flex-column">
 
-        <!-- partial:partials/_navbar.html -->
-        <nav class="navbar default-layout  d-flex align-items-top flex-row">
 
-            <div class="navbar-menu-wrapper d-flex align-items-top">
-                <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
-            </div>
-        </nav>
-        <!-- partial -->
         <div class="container-fluid page-body-wrapper row col-lg-12">
             <!-- partial:partials/_sidebar.html -->
-            <nav class="side-panel col-lg-2 d-flex flex-column">
-                <ul class="nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="Admin/Teams">
-                            <i class="mdi mdi-grid-large menu-Ticon"></i>
-                            <span class="menu-title">Teams</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Admin/Donors">
-                            <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">Donors</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Admin/Events">
-                            <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">Events</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Admin/Staff">
-                            <i class="mdi mdi-grid-large menu-icon"></i>
-                            <span class="menu-title">Staff</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+
+
+            <div class="row align-items-center justify-content-between">
+                <div class="col-auto aos-init aos-animate" data-aos="fade-right" data-aos-delay="1100">
+                    <a class="btn btn-primary" href="/Staff/Admin_main">
+                        Home
+                    </a>
+                </div>
+                <div class="col-auto aos-init aos-animate" data-aos="fade-left" data-aos-delay="1100">
+                    <a href="./Donors" class="btn btn-secondary active d-none d-md-inline-block me-sm-20 fw-5 link-light-1">Donors</a>
+
+                    <a href="./Teams" class="btn btn-secondary d-none d-md-inline-block me-sm-20 fw-5 link-light-1">Teams</a>
+
+                    <a href="./Events" class="btn btn-secondary d-none d-md-inline-block me-sm-20 fw-5 link-light-1">Events</a>
+
+                    <a href="./Staff" class="btn btn-secondary d-none d-md-inline-block me-sm-20 fw-5 link-light-1">Staff</a>
+                </div>
+            </div>
+            <br />
             <!-- partial -->
-            <div class="main-panel col-lg-10 d-flex flex-column">
-                <div class="content-wrapper">
-                    <div class="row">
-                        <div class="col-sm-12">
+            <div class="main-panel col-lg-12 d-flex flex-column">
+                        <div class="col-lg-12">
                             <div class="home-tab">
-                                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
-                                    <div class="nav-item">
-                                        <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Overview</a>
-                                    </div>
-                                </div>
-                                <div class="tab-content tab-content-basic">
-                                    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview">
-                                        <div class="row">
-                                            <div class="col-lg-8 d-flex flex-column">
-                                                <div class="row flex-grow">
-                                                    <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
-                                                        <div class="card card-rounded">
-                                                            <div class="card-body">
-                                                                <div class="d-sm-flex justify-content-between align-items-start">
-                                                                    <div>
-                                                                        <h4 class="card-title card-title-dash">Performance Line Chart</h4>
-                                                                        <h5 class="card-subtitle card-subtitle-dash">Lorem Ipsum is simply dummy text of the printing</h5>
-                                                                    </div>
-                                                                    <div id="performanceLine-legend"></div>
-                                                                </div>
-                                                                <div class="chartjs-wrapper mt-4">
-                                                                    <canvas id="performanceLine" width=""></canvas>
-                                                                </div>
-                                                            </div>
+                                            <div class="card card-rounded">
+                                                <div class="card-body">
+                                                    <div class="d-sm-flex justify-content-between align-items-start">
+                                                        <div>
+                                                            <h4 class="card-title card-title-dash">Donors</h4>
                                                         </div>
                                                     </div>
+                                                    <table class="table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">ID</th>
+                                                                <th scope="col">Name</th>
+                                                                <th scope="col">Blood Type</th>
+                                                                <th scope="col">Gender</th>
+                                                                <th scope="col">Date Of Birth</th>
+                                                                <th scope="col">Did Travel</th>
+                                                                <th scope="col">weight</th>
+                                                                <th scope="col">Blood Type</th>
+                                                                <th scope="col">Medication History</th>
+                                                                <th scope="col">Illness History</th>
+                                                                <th scope="col">Last Donation</th>
+                                                                <th scope="col">Phone Number</th>
+                                                                <th scope="col">Eligibility Status</th>
+                                                                <th scope="col">User ID</th>
+                                                                <th scope="col">Team ID</th>
+                                                                <th scope="col"></th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <td>Mark</td>
+                                                                <td>Otto</td>
+                                                                <td>Otto</td>
+                                                                <td>Otto</td>
+                                                                <td>Otto</td>
+                                                                <td>Otto</td>
+                                                                <td>Otto</td>
+                                                                <td>Otto</td>
+                                                                <td>Otto</td>
+                                                                <td>Otto</td>
+                                                                <td>Otto</td>
+                                                                <td>Otto</td>
+                                                                <td>Otto</td>
+                                                                <td class="">
+                                                                <div class="dropdown">
+                                                                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                       More
+                                                                    </a>
+
+                                                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-4 d-flex flex-column">
-                                                <div class="row flex-grow">
-                                                    <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                        <div class="card bg-primary card-rounded">
-                                                            <div class="card-body pb-0">
-                                                                <h4 class="card-title card-title-dash text-white mb-4">Status Summary</h4>
-                                                                <div class="row">
-                                                                    <div class="col-sm-4">
-                                                                        <p class="status-summary-ight-white mb-1">Closed Value</p>
-                                                                        <h2 class="text-info">357</h2>
-                                                                    </div>
-                                                                    <div class="col-sm-8">
-                                                                        <div class="status-summary-chart-wrapper pb-4">
-                                                                            <canvas id="status-summary"></canvas>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-lg-12 grid-margin stretch-card">
-                                                        <div class="card card-rounded">
-                                                            <div class="card-body">
-                                                                <div class="row">
-                                                                    <div class="col-lg-6">
-                                                                        <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
-                                                                            <div class="circle-progress-width">
-                                                                                <div id="totalVisitors" class="progressbar-js-circle pr-2"></div>
-                                                                            </div>
-                                                                            <div>
-                                                                                <p class="text-small mb-2">Total Visitors</p>
-                                                                                <h4 class="mb-0 fw-bold">26.80%</h4>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-lg-6">
-                                                                        <div class="d-flex justify-content-between align-items-center">
-                                                                            <div class="circle-progress-width">
-                                                                                <div id="visitperday" class="progressbar-js-circle pr-2"></div>
-                                                                            </div>
-                                                                            <div>
-                                                                                <p class="text-small mb-2">Visits per day</p>
-                                                                                <h4 class="mb-0 fw-bold">9065</h4>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                      
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- content-wrapper ends -->
+                   
             </div>
             <!-- main-panel ends -->
         </div>
