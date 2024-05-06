@@ -18,7 +18,7 @@
 
             <div class="row align-items-center justify-content-between">
                 <div class="col-auto aos-init aos-animate" data-aos="fade-right" data-aos-delay="1100">
-                    <a class ="btn btn-primary" href="/Staff/Admin_main">
+                    <a class="btn btn-primary" href="/Staff/Admin_main">
                         Home
                     </a>
                 </div>
@@ -103,14 +103,34 @@
                                                         </tbody>
                                                     </table>
                                                     <button class="btn btn-primary">
-                                                        <a href="#" data-toggle="popover" title="Popover Header" data-content="">Toggle popover</a>
+                                                        <a style="color:white;" href="#" data-toggle="popover" title="Popover Header" data-content="">Create</a>
                                                     </button>
                                                     <script>
                                                         $(document).ready(function () {
                                                             $('[data-toggle="popover"]').popover();
                                                         });
                                                     </script>
-
+                                                    <div class="card card-rounded" data-bs-toggle="popover">
+                                                        <div class="card-body">
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" class="form-control" placeholder="Event Name" aria-label="Username" aria-describedby="basic-addon1">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <input type="text" class="form-control" placeholder="Location" aria-label="Username" aria-describedby="basic-addon1">
+                                                            </div>
+                                                            <div class="input-group mb-3">
+                                                                <span class="input-group-text" id="basic-addon1">Date</span>
+                                                                <input type="text" class="form-control" placeholder="Day" aria-label="Username" aria-describedby="basic-addon1">
+                                                                <input type="text" class="form-control" placeholder="Month" aria-label="Username" aria-describedby="basic-addon1">
+                                                                <input type="text" class="form-control" placeholder="Year" aria-label="Username" aria-describedby="basic-addon1">
+                                                                
+                                                            </div>
+                                                            <div class="input-group">
+                                                                <span class="input-group-text">Description</span>
+                                                                <textarea class="form-control" aria-label="With textarea"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
