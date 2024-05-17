@@ -103,12 +103,13 @@
                                                         </tbody>
                                                     </table>
                                                     <button class="btn btn-primary">
-                                                        <a style="color:white;" href="#" data-toggle="popover" title="Popover Header" data-content="">Create</a>
+                                                        <a style="color:white;" href="#" data-bs-toggle="popover" title="Popover Header" data-content="">Create</a>
                                                     </button>
                                                     <script>
-                                                        $(document).ready(function () {
-                                                            $('[data-toggle="popover"]').popover();
-                                                        });
+                                                        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+                                                        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+                                                            return new bootstrap.Popover(popoverTriggerEl)
+                                                        })
                                                     </script>
                                                     <div class="card card-rounded" data-bs-toggle="popover">
                                                         <div class="card-body">
