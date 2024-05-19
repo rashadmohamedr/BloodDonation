@@ -49,19 +49,61 @@ namespace BloodDonation.Models
         public void AddUserSignUp(Dictionary<String, string> Dict)
         {
             con.Open();
-            string Q = $"INSERT INTO User (Name,Email,Password,Phone,DateOfBirth) VALUES ('{Dict["Name"]}','{Dict["Email"]}','{Dict["Password"]}','{Dict["Phone"]}','{Dict["DateOfBirth"]}');";
-            Q = $"INSERT INTO User (Name,Email,Password,Phone,DateOfBirth) VALUES ('name1','example@gmail.com','pass123','202201683','12-12-2022);";
+            Dict["UserID"] = "2";
+            string Q = $"INSERT INTO [User] ([UserId],Name,Email,Password,Phone,DateOfBirth,UserType) VALUES ('{Dict["UserID"]}','{Dict["Name"]}','{Dict["Email"]}','{Dict["Password"]}','{Dict["Phone"]}','{Dict["DateOfBirth"]}','{Dict["UserType"]}');";
             SqlCommand cmd = new SqlCommand(Q, con);
             cmd.ExecuteNonQuery();
-            Q = "SELECT UserID FROM User WHERE Email= '" + Dict["Email"] + "'; ";
-            cmd = new SqlCommand(Q, con);
-            object res = cmd.ExecuteScalar();
-            if (res != null)
+            switch (Dict["UserType"])
             {
-                string result = res.ToString();
-                Console.WriteLine(result);
-            };
+                case ("A")://Admin
+                    Q = $"INSERT INTO [Admin] ([AdminID],[UserID]) VALUES ('{Dict["AdminID"]}','{Dict["UserID"]}');";
+                    cmd = new SqlCommand(Q, con);
+                    cmd.ExecuteNonQuery();
+                    //redirect to admin_main
+                    break;
+                case ("C")://Coordinator
+                    Q = $"INSERT INTO [Admin] ([AdminID],[UserID]) VALUES ('{Dict["AdminID"]}','{Dict["UserID"]}');";
+                    cmd = new SqlCommand(Q, con);
+                    cmd.ExecuteNonQuery();
+                    //redirect to Coordinator
+                    break;
+                case ("D")://Donor
+                    Q = $"INSERT INTO [Donor] ([StaffID],[UserID]) VALUES ('{Dict["StaffID"]}','{Dict["UserID"]}');";
+                    cmd = new SqlCommand(Q, con);
+                    cmd.ExecuteNonQuery();
+                    //redirect to Donor
+                    break;
+                case ("S")://Staff
+                    Q = $"INSERT INTO [Staff] ([StaffID],[UserID]) VALUES ('{Dict["StaffID"]}','{Dict["UserID"]}');";
+                    cmd = new SqlCommand(Q, con);
+                    cmd.ExecuteNonQuery();
+                    //redirect to Staff
+                    break;
+            }
+            con.Close();
         }
+        public void SignIn(string Email, string Pass)
+        {
+            con.Open();
+            string Q = "SELECT [Password],[UserID],[UserType] FROM [User] WHERE [User].[Email]=\"" + Email + "\";";
+            SqlCommand cmd = new SqlCommand(Q, con);
+            String UserType = "";
+            switch (UserType)
+            {
+                case ("A")://Admin
+                    break;
+                case ("C")://Coordinator
+                    break;
+                case ("D")://Donor
+                    cmd.ExecuteNonQuery();
+                    break;
+                case ("S")://Staff
+                    break;
+                case ("X")://SuperAdmin
+                    break;
+            }
+        }
+
         /*
         public Dictionary<string, int> getFavouriteCodeEditors()
         {
@@ -90,7 +132,9 @@ namespace BloodDonation.Models
             finally { con.Close(); }
 
             return labelsAndCounts;
-        }*/
+        }
+        https://docs.google.com/spreadsheets/d/13M4cA44iRI1xT4YgI958HUh2GtbM1QXg7X7lO9j5W2k/edit#
+         */
 
         public DataTable ReadTable(string table)
         {
