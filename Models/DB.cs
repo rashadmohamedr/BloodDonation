@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using BloodDonation.Models.DBClasses;
+using System.Data;
 using System.Data.SqlClient;
 using System.Numerics;
 using System.Security.Cryptography.X509Certificates;
@@ -152,7 +153,27 @@ namespace BloodDonation.Models
             }
 
 
+        public void max(BloodDonation.Models.DBClasses.Donor donor_t)
+        {
+
+            con.Open();
+            string Q;
+            Q = "SELECT DISTINCT (BloodType) FROM BloodDonation.Models.DBClasses.Donor  ";
+            SqlCommand cmd = new SqlCommand(Q, con);
+            cmd.ExecuteReader();
+
+            object res = cmd.ExecuteScalar();
+            if (res != null)
+            {
+                string result = res.ToString();
+                Console.WriteLine(result);
+            };
+
+            con.Close();
 
         }
+
+
+    }
     }
 

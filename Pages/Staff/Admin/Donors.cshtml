@@ -74,25 +74,25 @@
                                                         </thead>
                                                         <tbody>
 
-                                        @foreach (var u in Model.Users)
+                                        @foreach (var d in Model.Donor)
                                         {
 
                                             
                                    
 
                                                             <tr>
-                                                                <th scope="row">u.UserID</th>
-                                                                <td>@u.Name</td>
-                                                                <td>@u.Email </td>
-                                                                <td>@u.Password</td>
-                                                                <td>@u.Phone</td>
-                                                                <td>@u.DateOfBirth    </td>
-                                                                <td>Otto</td>
-                                                                <td>Otto</td>
-                                                                <td>Otto</td>
-                                                                <td>Otto</td>
-                                                                <td>Otto</td>
-                                                                <td>Otto</td>
+                                                                <th scope="row">d.UserID</th>
+                                                                <td>@d.DonorID</td>
+                                                                <td>@d.Gender </td>
+                                                                <td>@d.BloodType</td>
+                                                                <td>@d.Travel</td>
+                                                                <td>@d.MedicationHistory   </td>
+                                                                <td>@d.IllnessHistory</td>
+                                                                <td>@d.DonationInterval</td>
+                                                                <td>@d.EligibilityStatus</td>
+                                                                <td>@d.Weight</td>
+                                                                <td>@d.TeamID</td>
+                                                                <td>@d.TeamLeaderID</td>
                                                                 <td>Otto</td>
                                                                 <td>Otto</td>
                                                                 <td class="">

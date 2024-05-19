@@ -10,9 +10,9 @@ namespace BloodDonation.Pages.Staff.Admin
         private readonly ILogger<DonorsModel> _logger;
         private DB dB { get; set; }    
         public DataTable dt { get; set; }
-        public Models.DBClasses.User u {  get; set; }
+        public Models.DBClasses.Donor d {  get; set; }
 
-        public List<Models.DBClasses.User> Users { get; set; } = new List<Models.DBClasses.User>();
+        public List<Models.DBClasses.Donor> Donor { get; set; } = new List<Models.DBClasses.Donor>();
 
 
 
@@ -29,20 +29,24 @@ namespace BloodDonation.Pages.Staff.Admin
 
             
 
-           dt= dB.ReadTable("User");
+           dt= dB.ReadTable("Donor");
 
             for (int i = 0; i < dt.Rows.Count; i++) {
 
-                u = new Models.DBClasses.User();
+                d = new Models.DBClasses.Donor();
 
-                u.UserID = (int)dt.Rows[i]["UserID"];
-                u.Name = (string)dt.Rows[i]["Name"];
-                u.Email = (string)dt.Rows[i]["Email"];
-                u.Password = (string)dt.Rows[i]["Password"];
-                u.Phone = (string)dt.Rows[i]["Phone"];
-                u.DateOfBirth = dt.Rows[i]["DateOfBirth"].ToString();
+                d.DonorID = (int)dt.Rows[i]["donorID"];
+                d.BloodType = (string)dt.Rows[i]["Blood_T"];
+                d.Gender = (string)dt.Rows[i]["gender"];
+                d.Travel = (string)dt.Rows[i]["travel"];
+                d.MedicationHistory = (string)dt.Rows[i]["med_his"];
+                d.Weight = (int)dt.Rows[i]["weight"];
+                d.IllnessHistory = (string)dt.Rows[i]["ill_his"];
+                d.DonationInterval = (string)dt.Rows[i]["donation_int"];
+                d.EligibilityStatus = (string)dt.Rows[i]["eligability"];
 
-                Users.Add(u);
+
+                Donor.Add(d);
 
             }
 
