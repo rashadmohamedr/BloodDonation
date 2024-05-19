@@ -50,7 +50,7 @@ namespace BloodDonation.Models
             Q = "SELECT UserID FROM User WHERE Email= '"+ Dict["Email"]+ "'; ";
             cmd=new SqlCommand(Q,con);
             DataTable dt = new DataTable();
-            dt.Load( cmd.ExecuteScalar());
+         //   dt.Load( cmd.ExecuteScalar());
         }
         public void AddAdminSignUp() { }
         public void AddCoordinatorSignUp() { }
@@ -91,6 +91,7 @@ namespace BloodDonation.Models
             DataTable dt = new DataTable();
 
             string Q = $"SELECT * FROM [db_aa8e0c_blooddb].[dbo].["+ table+"]; ";
+            Q= "SELECT * FROM [db_aa8e0c_blooddb].[dbo].[User];";
             con.Open();
             SqlCommand cmd = new SqlCommand(Q,con);
             dt.Load(cmd.ExecuteReader());

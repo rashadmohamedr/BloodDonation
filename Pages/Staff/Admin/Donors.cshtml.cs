@@ -9,7 +9,6 @@ namespace BloodDonation.Pages.Staff.Admin
     {
         private readonly ILogger<DonorsModel> _logger;
         private DB dB { get; set; }    
-
         public DataTable dt { get; set; }
         public Models.DBClasses.User u {  get; set; }
 
@@ -29,12 +28,12 @@ namespace BloodDonation.Pages.Staff.Admin
 
            dt= dB.ReadTable("User");
 
-            u.Id = (int)dt.Rows[0]["id"];
+            u.UserID = (int)dt.Rows[0]["UserID"];
             u.Name = (string)dt.Rows[0]["Name"];
-            u.Email = (string)dt.Rows[0]["email"];
-            u.Password = (string)dt.Rows[0]["Pass"];
-            u.PhoneNumber = (string)dt.Rows[0]["PNO"];
-            u.DateOfBirth = (string)dt.Rows[0]["DOB"];
+            u.Email = (string)dt.Rows[0]["Email"];
+            u.Password = (string)dt.Rows[0]["Password"];
+            u.Phone = (string)dt.Rows[0]["Phone"];
+ //           u.DateOfBirth = (string)dt.Rows[0]["DateOfBirth"];
 
 
 
