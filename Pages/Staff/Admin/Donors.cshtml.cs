@@ -31,18 +31,31 @@ namespace BloodDonation.Pages.Staff.Admin
 
            dt= dB.ReadTable("User");
 
+<<<<<<< HEAD
             for (int i = 0; i < dt.Rows.Count; i++) {
 
                 u = new Models.DBClasses.User();
 
-           dt= dB.ReadTable("User");
+                u.Id = (int)dt.Rows[i]["id"];
+                u.Name = (string)dt.Rows[i]["Name"];
+                u.Email = (string)dt.Rows[i]["email"];
+                u.Password = (string)dt.Rows[i]["Pass"];
+                u.Phone = (string)dt.Rows[i]["PNO"];
+                u.DateOfBirth = (string)dt.Rows[i]["DOB"];
 
+                Users.Add(u);
+
+            }
+
+           
+=======
             u.UserID = (int)dt.Rows[0]["UserID"];
             u.Name = (string)dt.Rows[0]["Name"];
             u.Email = (string)dt.Rows[0]["Email"];
             u.Password = (string)dt.Rows[0]["Password"];
             u.Phone = (string)dt.Rows[0]["Phone"];
             u.DateOfBirth = dt.Rows[0]["DateOfBirth"].ToString();
+>>>>>>> 95e5051507dbbbcef6723c91068451b98cbc41fc
 
 
 
