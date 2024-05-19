@@ -40,7 +40,27 @@ namespace BloodDonation.Models
             }
             //int numVal = Int32.Parse("-105");
             //Console.WriteLine(numVal);
+            return true;
         }
+        public void AddUserSignUp(Dictionary<String, string> Dict) {
+            con.Open();
+            string Q = $"INSERT INTO User (Name,Email,Password,Phone,DateOfBirth) VALUES ('{Dict["Name"]}','{Dict["Email"]}','{Dict["Password"]}','{Dict["Phone"]}','{Dict["DateOfBirth"]}');";
+            Q = $"INSERT INTO User (Name,Email,Password,Phone,DateOfBirth) VALUES ('name1','example@gmail.com','pass123','202201683','12-12-2022);";
+            SqlCommand cmd = new SqlCommand(Q,con);
+            cmd.ExecuteNonQuery();
+            Q = "SELECT UserID FROM User WHERE Email= '"+ Dict["Email"]+ "'; ";
+            cmd=new SqlCommand(Q,con); 
+            object res = cmd.ExecuteScalar();
+            if (res != null)
+            {
+                string result = res.ToString();
+                Console.WriteLine(result);
+            };
+        }
+        public void AddAdminSignUp() { }
+        public void AddCoordinatorSignUp() { }
+        public void AddDonorSignUp() { }
+        public void AddStaffSignUp() { }
         /*
         public Dictionary<string, int> getFavouriteCodeEditors()
         {
@@ -75,7 +95,7 @@ namespace BloodDonation.Models
         {
             DataTable dt = new DataTable();
 
-            string Q = $"SELECT * FROM [db_aa8e0c_blooddb].[dbo].["+ table+"]; ";
+            string Q = $"SELECT * FROM [db_aa8e0c_blooddb].[dbo].["+ table+"];";
             con.Open();
             SqlCommand cmd = new SqlCommand(Q,con);
             dt.Load(cmd.ExecuteReader());
