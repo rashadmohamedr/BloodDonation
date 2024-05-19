@@ -45,6 +45,7 @@ namespace BloodDonation.Models
         public void AddUserSignUp(Dictionary<String, string> Dict) {
             con.Open();
             string Q = $"INSERT INTO User (Name,Email,Password,Phone,DateOfBirth) VALUES ('{Dict["Name"]}','{Dict["Email"]}','{Dict["Password"]}','{Dict["Phone"]}','{Dict["DateOfBirth"]}');";
+            Q = $"INSERT INTO User (Name,Email,Password,Phone,DateOfBirth) VALUES ('name1','example@gmail.com','pass123','202201683','12-12-2022);";
             SqlCommand cmd = new SqlCommand(Q,con);
             cmd.ExecuteNonQuery();
             Q = "SELECT UserID FROM User WHERE Email= '"+ Dict["Email"]+ "'; ";
