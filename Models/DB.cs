@@ -42,5 +42,20 @@ namespace BloodDonation.Models
 
             return labelsAndCounts;
         }*/
+
+        public DataTable ReadTable(string table)
+        {
+            DataTable dt = new DataTable();
+
+            string Q = $"select * from  { table} ";
+            con.Open();
+            SqlCommand cmd = new SqlCommand(Q,con);
+            dt.Load(cmd.ExecuteReader());
+
+            return dt;
+
+        }
+
+
     }
 }
