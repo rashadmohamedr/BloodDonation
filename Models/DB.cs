@@ -14,6 +14,7 @@ namespace BloodDonation.Models
         }
         public bool AddNewEntityCustomized(Dictionary<String,string> Dict)
         {
+            return true;
             con.Open();
             string Q;
             switch (Dict["Table"])
@@ -22,7 +23,7 @@ namespace BloodDonation.Models
                     Q = $"INSERT INTO Admin ( AdminID , UserID ) Values ('{Dict["AdminID"]}','{Dict["User ID"]}'')";
                     break;
                 case "AnEvent":
-                    Q=$""
+                    Q = $"";
                     break;
                 case "Coordinator":
                     break;
@@ -74,10 +75,11 @@ namespace BloodDonation.Models
         {
             DataTable dt = new DataTable();
 
-            string Q = $"select * from  { table} ";
+            string Q = $"SELECT * FROM [db_aa8e0c_blooddb].[dbo].["+ table+"]; ";
             con.Open();
             SqlCommand cmd = new SqlCommand(Q,con);
             dt.Load(cmd.ExecuteReader());
+            con.Close();
 
             return dt;
 
