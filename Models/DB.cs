@@ -44,13 +44,17 @@ namespace BloodDonation.Models
         }
         public void AddUserSignUp(Dictionary<String, string> Dict) {
             con.Open();
-            string Q = $"INSERT INTO Users (Name,Email,Password,Phone,DateOfBirth) VALUES '{Dict["Name"]}','{Dict["Email"]}','{Dict["Password"]}','{Dict["Phone"]}','{Dict["DateOfBirth"]}');";
+            string Q = $"INSERT INTO User (Name,Email,Password,Phone,DateOfBirth) VALUES ('{Dict["Name"]}','{Dict["Email"]}','{Dict["Password"]}','{Dict["Phone"]}','{Dict["DateOfBirth"]}');";
             SqlCommand cmd = new SqlCommand(Q,con);
             cmd.ExecuteNonQuery();
             Q = "SELECT UserID FROM User WHERE Email= '"+ Dict["Email"]+ "'; ";
-            cmd=new SqlCommand(Q,con);
-            DataTable dt = new DataTable();
-         //   dt.Load( cmd.ExecuteScalar());
+            cmd=new SqlCommand(Q,con); 
+            object res = cmd.ExecuteScalar();
+            if (res != null)
+            {
+                string result = res.ToString();
+                Console.WriteLine(result);
+            };
         }
         public void AddAdminSignUp() { }
         public void AddCoordinatorSignUp() { }
@@ -90,8 +94,7 @@ namespace BloodDonation.Models
         {
             DataTable dt = new DataTable();
 
-            string Q = $"SELECT * FROM [db_aa8e0c_blooddb].[dbo].["+ table+"]; ";
-            Q= "SELECT * FROM [db_aa8e0c_blooddb].[dbo].[User];";
+            string Q = $"SELECT * FROM [db_aa8e0c_blooddb].[dbo].["+ table+"];";
             con.Open();
             SqlCommand cmd = new SqlCommand(Q,con);
             dt.Load(cmd.ExecuteReader());

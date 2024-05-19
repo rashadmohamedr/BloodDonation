@@ -33,7 +33,7 @@ namespace BloodDonation.Pages.Staff.Admin
             u.Email = (string)dt.Rows[0]["Email"];
             u.Password = (string)dt.Rows[0]["Password"];
             u.Phone = (string)dt.Rows[0]["Phone"];
- //           u.DateOfBirth = (string)dt.Rows[0]["DateOfBirth"];
+            u.DateOfBirth = dt.Rows[0]["DateOfBirth"].ToString();
 
 
 
