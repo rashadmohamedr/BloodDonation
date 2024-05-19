@@ -12,9 +12,23 @@ namespace BloodDonation.Models
             string conStr = "Data Source=SQL8010.site4now.net;Initial Catalog=db_aa8e0c_blooddb;User Id=db_aa8e0c_blooddb_admin;Password=123456BloodDB";
             con = new SqlConnection(conStr);
         }
-        public bool Add()
+        public bool Add(Dictionary<String,string> Dict)
         {
-            
+            switch (Dict["Table"])
+            {
+                case "Admin":
+                    break;
+                case "AnEvent":
+                    break;
+                case "Coordinator":
+                    break;
+                case "Donor":
+                    break;
+                case "Experience":
+                    break;
+            }
+            //int numVal = Int32.Parse("-105");
+            //Console.WriteLine(numVal);
         }
         /*
         public Dictionary<string, int> getFavouriteCodeEditors()
