@@ -4,15 +4,15 @@ using System.Numerics;
 
 namespace BloodDonation.Models
 {
-    /*
     public class DB
     {
         public SqlConnection con { get; set; }
         public DB()
         {
-            string conStr = "Data Source=DESKTOP-1DD8VBL;Initial Catalog=SurveyProject;Integrated Security=True";
+            string conStr = "Data Source=SQL8010.site4now.net;Initial Catalog=db_aa8e0c_blooddb;User Id=db_aa8e0c_blooddb_admin;Password=123456BloodDB";
             con = new SqlConnection(conStr);
         }
+        /*
 
         public Dictionary<string, int> getFavouriteCodeEditors()
         {
@@ -41,6 +41,6 @@ namespace BloodDonation.Models
             finally { con.Close(); }
 
             return labelsAndCounts;
-        }
-    }*/
+        }*/
+    }
 }
