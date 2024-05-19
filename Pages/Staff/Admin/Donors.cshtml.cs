@@ -13,6 +13,9 @@ namespace BloodDonation.Pages.Staff.Admin
         public DataTable dt { get; set; }
         public Models.DBClasses.User u {  get; set; }
 
+        public List<User> Users { get; set; } = new List<User>();
+
+
 
         public DonorsModel (ILogger<DonorsModel> logger, DB dB)
         {
@@ -25,16 +28,26 @@ namespace BloodDonation.Pages.Staff.Admin
         public void OnGet()
         {
 
-            u = new Models.DBClasses.User();
+            
 
            dt= dB.ReadTable("User");
 
-            u.Id = (int)dt.Rows[0]["id"];
-            u.Name = (string)dt.Rows[0]["Name"];
-            u.Email = (string)dt.Rows[0]["email"];
-            u.Password = (string)dt.Rows[0]["Pass"];
-            u.PhoneNumber = (string)dt.Rows[0]["PNO"];
-            u.DateOfBirth = (string)dt.Rows[0]["DOB"];
+            for (int i = 0; i < dt.Rows.Count; i++) {
+
+                u = new Models.DBClasses.User();
+
+                u.Id = (int)dt.Rows[i]["id"];
+                u.Name = (string)dt.Rows[i]["Name"];
+                u.Email = (string)dt.Rows[i]["email"];
+                u.Password = (string)dt.Rows[i]["Pass"];
+                u.PhoneNumber = (string)dt.Rows[i]["PNO"];
+                u.DateOfBirth = (string)dt.Rows[i]["DOB"];
+
+                Users.Add(u);
+
+            }
+
+           
 
 
 

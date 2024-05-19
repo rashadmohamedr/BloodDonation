@@ -73,13 +73,20 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+
+                                        @foreach (var u in Model.Users)
+                                        {
+
+                                            
+                                   
+
                                                             <tr>
                                                                 <th scope="row">@Model.u.Id</th>
-                                                                <td>@Model.u.Name</td>
-                                                                <td>@Model.u.Email </td>
-                                                                <td>@Model.u.Password</td>
-                                                                <td>@Model.u.PhoneNumber</td>
-                                                                <td>@Model.u.DateOfBirth</td>
+                                                                <td>@u.Name</td>
+                                                                <td>@u.Email </td>
+                                                                <td>@u.Password</td>
+                                                                <td>@u.PhoneNumber</td>
+                                                                <td>@u.DateOfBirth</td>
                                                                 <td>Otto</td>
                                                                 <td>Otto</td>
                                                                 <td>Otto</td>
@@ -101,6 +108,8 @@
                                                                 </div>
                                                                 </td>
                                                             </tr>
+
+                                                            }
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -115,4 +124,6 @@
         <!-- page-body-wrapper ends -->
     </div>
 </body>
+
+<a class="btn btn-primary" asp-page="/create">Add Donor</a>
 </html>
