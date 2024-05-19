@@ -40,7 +40,22 @@ namespace BloodDonation.Models
             }
             //int numVal = Int32.Parse("-105");
             //Console.WriteLine(numVal);
+            return true;
         }
+        public void AddUserSignUp(Dictionary<String, string> Dict) {
+            con.Open();
+            string Q = $"INSERT INTO Users (Name,Email,Password,Phone,DateOfBirth) VALUES '{Dict["Name"]}','{Dict["Email"]}','{Dict["Password"]}','{Dict["Phone"]}','{Dict["DateOfBirth"]}');";
+            SqlCommand cmd = new SqlCommand(Q,con);
+            cmd.ExecuteNonQuery();
+            Q = "SELECT UserID FROM User WHERE Email= '"+ Dict["Email"]+ "'; ";
+            cmd=new SqlCommand(Q,con);
+            DataTable dt = new DataTable();
+            dt.Load( cmd.ExecuteScalar());
+        }
+        public void AddAdminSignUp() { }
+        public void AddCoordinatorSignUp() { }
+        public void AddDonorSignUp() { }
+        public void AddStaffSignUp() { }
         /*
         public Dictionary<string, int> getFavouriteCodeEditors()
         {
