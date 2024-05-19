@@ -62,10 +62,6 @@ namespace BloodDonation.Models
                 Console.WriteLine(result);
             };
         }
-        public void AddAdminSignUp() { }
-        public void AddCoordinatorSignUp() { }
-        public void AddDonorSignUp() { }
-        public void AddStaffSignUp() { }
         /*
         public Dictionary<string, int> getFavouriteCodeEditors()
         {
@@ -110,24 +106,7 @@ namespace BloodDonation.Models
 
         }
 
-
-
-        public void AddDonor_Admin(Dictionary<String, string> Dict)
-        {
-            con.Open();
-            string Q = $"INSERT INTO User (Name,Email,Password,Phone,DateOfBirth) VALUES ('{Dict["Name"]}','{Dict["Email"]}','{Dict["Password"]}','{Dict["Phone"]}','{Dict["DateOfBirth"]}');";
-            Q = $"INSERT INTO User (Name,Email,Password,Phone,DateOfBirth) VALUES ('name1','example@gmail.com','pass123','202201683','12-12-2022);";
-            SqlCommand cmd = new SqlCommand(Q, con);
-            cmd.ExecuteNonQuery();
-            Q = "SELECT UserID FROM User WHERE Email= '" + Dict["Email"] + "'; ";
-            cmd = new SqlCommand(Q, con);
-            object res = cmd.ExecuteScalar();
-            if (res != null)
-            {
-                string result = res.ToString();
-                Console.WriteLine(result);
-            };
-        }
+        
 
 
 
