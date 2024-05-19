@@ -12,8 +12,11 @@ namespace BloodDonation.Models
             string conStr = "Data Source=SQL8010.site4now.net;Initial Catalog=db_aa8e0c_blooddb;User Id=db_aa8e0c_blooddb_admin;Password=123456BloodDB";
             con = new SqlConnection(conStr);
         }
+        public bool Add()
+        {
+            
+        }
         /*
-
         public Dictionary<string, int> getFavouriteCodeEditors()
         {
             Dictionary<string, int> labelsAndCounts = new Dictionary<string, int>();
