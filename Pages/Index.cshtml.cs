@@ -1,3 +1,4 @@
+using BloodDonation.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -7,11 +8,13 @@ namespace BloodDonation.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
+        private DB dB { get; set; }
+        public IndexModel(ILogger<IndexModel> logger, DB dB) {
 
-        public IndexModel(ILogger<IndexModel> logger)
-        {
             _logger = logger;
+            this.dB = dB;
         }
+  
         [BindProperty]
         [Required]
         [EmailAddress]
@@ -24,13 +27,14 @@ namespace BloodDonation.Pages
         public void OnGet()
         {
 
+            Console.WriteLine("email" + "pass");
         }
-        public void OnPostLogin(string email,string pass)
+        public IActionResult OnPostLogin(string email,string pass)
         {
-            Console.WriteLine(email + pass);
-        }
-        public void OnPostSignUp()
-        {
+             (string,string) data=dB.SignIn(email, pass);
+            HttpContext.Session.SetString("UserID",data.Item2);
+            Console.WriteLine(data);
+            return RedirectToPage(data.Item1);
 
         }
     }

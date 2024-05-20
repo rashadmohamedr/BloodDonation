@@ -23,39 +23,29 @@
         top: 13px;
     }
 </style>
-<section class="vh-100 gradient-custom">
-    <div class="container py-5 h-100">
+<section class="vh-200 gradient-custom">
+    <div class="container py-5 h-200">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-12 col-lg-9 col-xl-7">
                 <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                     <div class="card-body p-4 p-md-5">
                         <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-                        <form>
+                        <form asp-page-handler="SignUp" method="post">
 
                             <div class="row">
-                                <div class="col-md-6 mb-4">
 
-                                    <div data-mdb-input-init class="form-outline">
-                                        <input type="text" id="firstName" class="form-control form-control-lg" />
-                                        <label class="form-label" for="firstName">First Name</label>
-                                    </div>
-
+                                <div data-mdb-input-init class="form-outline">
+                                    <input type="text" name="Name" class="form-control form-control-lg" />
+                                    <label class="form-label" for="firstName">Name</label>
                                 </div>
-                                <div class="col-md-6 mb-4">
 
-                                    <div data-mdb-input-init class="form-outline">
-                                        <input type="text" id="lastName" class="form-control form-control-lg" />
-                                        <label class="form-label" for="lastName">Last Name</label>
-                                    </div>
-
-                                </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-6 mb-4 d-flex align-items-center">
 
                                     <div data-mdb-input-init class="form-outline datepicker w-100">
-                                        <input type="text" class="form-control form-control-lg" id="birthdayDate" />
+                                        <input value="dd-mm-yyyy" type="text" class="form-control form-control-lg" name="birthdayDate" />
                                         <label for="birthdayDate" class="form-label">Birthday</label>
                                     </div>
 
@@ -65,21 +55,15 @@
                                     <h6 class="mb-2 pb-1">Gender: </h6>
 
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                                               value="option1" checked />
+                                        <input class="form-check-input" type="radio"  name="Gender"
+                                               value="F" />
                                         <label class="form-check-label" for="femaleGender">Female</label>
                                     </div>
 
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                                               value="option2" />
+                                        <input class="form-check-input" type="radio" name="Gender"
+                                               value="M" />
                                         <label class="form-check-label" for="maleGender">Male</label>
-                                    </div>
-
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="otherGender"
-                                               value="option3" />
-                                        <label class="form-check-label" for="otherGender">Other</label>
                                     </div>
 
                                 </div>
@@ -89,7 +73,7 @@
                                 <div class="col-md-6 mb-4 pb-2">
 
                                     <div data-mdb-input-init class="form-outline">
-                                        <input type="email" id="emailAddress" class="form-control form-control-lg" />
+                                        <input type="email" name="email" class="form-control form-control-lg" />
                                         <label class="form-label" for="emailAddress">Email</label>
                                     </div>
 
@@ -97,31 +81,97 @@
                                 <div class="col-md-6 mb-4 pb-2">
 
                                     <div data-mdb-input-init class="form-outline">
-                                        <input type="tel" id="phoneNumber" class="form-control form-control-lg" />
-                                        <label class="form-label" for="phoneNumber">Phone Number</label>
+                                        <input type="Password" name="Password" class="form-control form-control-lg" />
+                                        <label class="form-label" for="Password">Password</label>
                                     </div>
 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div data-mdb-input-init class="form-outline">
+                                    <input type="tel" name="Phone" class="form-control form-control-lg" />
+                                    <label class="form-label" for="phoneNumber">Phone Number</label>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-12">
 
-                                    <select class="select form-control-lg">
-                                        <option value="1" disabled>Choose option</option>
-                                        <option value="2">Subject 1</option>
-                                        <option value="3">Subject 2</option>
-                                        <option value="4">Subject 3</option>
+                                    <select class="select form-control-lg" name="UserType">
+                                        <option value="1" disabled>Choose Account Type</option>
+                                        <option value="A">Admin</option>
+                                        <option value="C">Coordinator</option>
+                                        <option value="D">Donor</option>
+                                        <option value="S">Staff</option>
                                     </select>
-                                    <label class="form-label select-label">Choose option</label>
+                                    <label class="form-label select-label">Account Type</label>
 
                                 </div>
                             </div>
 
+                            
+                            <br>
+                            <h2>Staff</h2>
+                            <br>
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label" for="role">Your Role</label>
+                                <input type="tel" value="Write Your Role" name="Role" class="form-control form-control-lg" />
+                            </div>
+                            <br>
+                            <h2>Donor</h2>
+                            <div class="donor_bloodtype">
+                                <P4>Your Blood type:</P4>
+                                <select name="BloodType">
+                                    <br><br />
+                                    <option value="A+">A+</option>
+                                    <option value="B+">B+</option>
+                                    <option value="AB+">AB+</option>
+                                    <option value="O+">O+</option>
+                                    <option value="A-">A-</option>
+                                    <option value="B-">B-</option>
+                                    <option value="AB-">AB-</option>
+                                    <option value="O-">O-</option>
+                                    </select>
+                             </div>
+                            <br />
+
+                            <p4>Did you travel before?</p4>
+                            <div class="Donor_travel">
+
+                                <select name="Travel">
+                                    <br>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+
+                                </select>
+
+                            </div>
+                            <br>
+                            <div class="Donor_MedicationHistory">
+                                <span class="input-group-text">Medication History</span>
+                                <textarea name="MedicationHistory" class="form-control" aria-label="With textarea"></textarea>
+                            </div>
+
+                            <br>
+                            <div class="weight">
+                                <span class="input-group-text">Weight</span>
+                                <input name="weight" type="number" class="form-control" placeholder="your Weight in Kilograms" aria-label="weight" aria-describedby="basic-addon1">
+                            </div>
+
+                            <br>
+
+                            <div class="Donation_interval">
+
+                                <span class="input-group-text" id="basic-addon1">Last Donation </span>
+                                <input name="Donation_interval_days" type="number" class="form-control" placeholder="Days" aria-label="Username" aria-describedby="basic-addon1">
+                                <input name="Donation_interval_months" type="number" class="form-control" placeholder="Months" aria-label="Username" aria-describedby="basic-addon1">
+                                <input name="Donation_interval_years" type="number" class="form-control" placeholder="Years" aria-label="Username" aria-describedby="basic-addon1">
+
+                            </div>
+                            <br />
                             <div class="mt-4 pt-2">
                                 <input data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Submit" />
                             </div>
-
                         </form>
                     </div>
                 </div>
