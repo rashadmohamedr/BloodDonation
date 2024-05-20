@@ -83,8 +83,7 @@ namespace BloodDonation.Models
                     break;
             }
             con.Close();
-        }
-        public (string, string) SignIn(string Email, string Pass)
+        }public (string, string) SignIn(string Email, string Pass)
         {
             con.Open();
             string Q = "SELECT [Password],[UserID],[UserType] FROM [User] WHERE [User].[Email]=\"" + Email + "\";";
