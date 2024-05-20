@@ -9,6 +9,7 @@ namespace BloodDonation.Models
     public class DB
     {
         public SqlConnection con { get; set; }
+        public Models.DBClasses.User u { get; set; }
         public DB()
         {
             string conStr = "Data Source=SQL8010.site4now.net;Initial Catalog=db_aa8e0c_blooddb;User Id=db_aa8e0c_blooddb_admin;Password=123456BloodDB";
@@ -17,7 +18,7 @@ namespace BloodDonation.Models
         public bool AddNewEntityCustomized(Dictionary<String, string> Dict)
         {
             return true;
-            con.Open();
+            //con.Open();
             string Q;
             switch (Dict["Table"])
             {
@@ -83,26 +84,36 @@ namespace BloodDonation.Models
             }
             con.Close();
         }
-        public void SignIn(string Email, string Pass)
+        public (string, string) SignIn(string Email, string Pass)
         {
             con.Open();
             string Q = "SELECT [Password],[UserID],[UserType] FROM [User] WHERE [User].[Email]=\"" + Email + "\";";
             SqlCommand cmd = new SqlCommand(Q, con);
-            String UserType = "";
-            switch (UserType)
+            DataTable dt = new DataTable();
+            dt.Load(cmd.ExecuteReader());
+            u = new Models.DBClasses.User();
+            u.UserID = (int)dt.Rows[0]["UserID"];
+            u.UserType = (string)dt.Rows[0]["UserType"];
+            u.Password = (string)dt.Rows[0]["Password"];
+            con.Close();
+            if (u.Password== Pass)
             {
-                case ("A")://Admin
-                    break;
-                case ("C")://Coordinator
-                    break;
-                case ("D")://Donor
-                    cmd.ExecuteNonQuery();
-                    break;
-                case ("S")://Staff
-                    break;
-                case ("X")://SuperAdmin
-                    break;
+                switch (u.UserType)
+                {
+                    case ("A")://Admin
+                        return ("Pages/Staff/Admin_main", u.UserID.ToString());
+                    case ("C")://Coordinator
+                        return ("Pages/Staff/Coordinator_main", u.UserID.ToString());
+                    case ("D")://Donor
+                        return ("Pages/User/Donor_main", u.UserID.ToString());
+                    case ("S")://Staff
+                        return ("Pages/Staff/Staff_main", u.UserID.ToString());
+                    case ("X")://SuperAdmin
+                        return ("Pages/Staff/Admin_main", "S"+u.UserID.ToString());
+                    
+                }
             }
+            return ("UncorrectPassword",""); 
         }
 
         /*
@@ -151,18 +162,18 @@ namespace BloodDonation.Models
 
         }
 
-        
 
 
 
-     public void GetColumnCount( string tableName)
-            {
-                
-                    con.Open();
+
+        public void GetColumnCount(string tableName)
+        {
+
+            con.Open();
             string Q;
-                Q = "SELECT COUNT(*) FROM  [" + tableName + "] ";
-                SqlCommand cmd = new SqlCommand(Q, con);
-                cmd.ExecuteNonQuery();
+            Q = "SELECT COUNT(*) FROM  [" + tableName + "] ";
+            SqlCommand cmd = new SqlCommand(Q, con);
+            cmd.ExecuteNonQuery();
 
             object res = cmd.ExecuteScalar();
             if (res != null)
@@ -173,7 +184,7 @@ namespace BloodDonation.Models
 
             con.Close();
 
-            }
+        }
 
 
         public void max(BloodDonation.Models.DBClasses.Donor donor_t)
