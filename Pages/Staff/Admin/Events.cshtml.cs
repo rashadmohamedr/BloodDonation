@@ -88,7 +88,7 @@ namespace BloodDonation.Pages.Staff.Admin
         public string Donation_interval_years { get; set; }
        
 
-        public IActionResult OnPostEvents(string Name,
+        public void OnPostEvents(string Name,
                                  string BirthdayDate,
                                  string Gender,
                                  string email,
@@ -123,14 +123,7 @@ namespace BloodDonation.Pages.Staff.Admin
                 { "Donation_interval_years", Donation_interval_years }
             };
 
-            foreach (KeyValuePair<string, string> property in properties)
-            {
-                Console.WriteLine($"{property.Key}: {property.Value}");
-            }
-            (string, string) data = dB.AddUserSignUp(properties);
-            HttpContext.Session.SetString("UserID", data.Item2);
-            Console.WriteLine(data);
-            return RedirectToPage(data.Item1);
+            return;
 
 
         }

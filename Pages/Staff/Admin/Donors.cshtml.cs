@@ -100,7 +100,7 @@ namespace BloodDonation.Pages.Staff.Admin
 
 
 
-        public IActionResult OnPostDonors(string Name,
+        public void OnPostDonors(string DonorID, string Name,
                                  string BirthdayDate,
                                  string Gender,
                                  string email,
@@ -121,6 +121,7 @@ namespace BloodDonation.Pages.Staff.Admin
 
             Dictionary<string, string> properties = new Dictionary<string, string>()
             {
+                { "Name", Name },
                 { "Name", Name },
                 { "DateOfBirth", BirthdayDate },
                 { "Gender", Gender },
@@ -143,9 +144,7 @@ namespace BloodDonation.Pages.Staff.Admin
                 Console.WriteLine($"{property.Key}: {property.Value}");
             }
             (string, string) data = dB.AddDonor(properties);
-            HttpContext.Session.SetString("UserID", data.Item2);
-            Console.WriteLine(data);
-            return RedirectToPage(data.Item1);
+            return ;
 
 
 
