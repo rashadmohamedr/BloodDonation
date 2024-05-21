@@ -35,15 +35,15 @@ namespace BloodDonation.Pages.Staff.Admin
 
                 d = new Models.DBClasses.Donor();
 
-                d.DonorID = (int)dt.Rows[i]["donorID"];
-                d.BloodType = (string)dt.Rows[i]["Blood_T"];
-                d.Gender = (string)dt.Rows[i]["gender"];
-                d.Travel = (string)dt.Rows[i]["travel"];
-                d.MedicationHistory = (string)dt.Rows[i]["med_his"];
-                d.Weight = (int)dt.Rows[i]["weight"];
-                d.IllnessHistory = (string)dt.Rows[i]["ill_his"];
-                d.DonationInterval = (string)dt.Rows[i]["donation_int"];
-                d.EligibilityStatus = (string)dt.Rows[i]["eligability"];
+                d.DonorID = (int)dt.Rows[i]["DonorID"];
+                d.BloodType = (string)dt.Rows[i]["BloodType"];
+                d.Gender = (string)dt.Rows[i]["Gender"];
+                d.Travel = (string)dt.Rows[i]["Travel"];
+                d.MedicationHistory = (string)dt.Rows[i]["MedicationHistory"];
+                d.Weight = (int)dt.Rows[i]["Weight"];
+                d.IllnessHistory = (string)dt.Rows[i]["IllnessHistory"];
+                d.DonationInterval = (string)dt.Rows[i]["DonationInterval"];
+                d.EligibilityStatus = (string)dt.Rows[i]["EligibilityStatus"];
 
 
                 Donor.Add(d);
