@@ -6,22 +6,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body class="with-welcome-text">
-
     <div class="container-scroller d-flex flex-column">
-
-        <!-- partial:partials/_navbar.html -->
-        <nav class="navbar default-layout  d-flex align-items-top flex-row">
-
+        <nav class="navbar default-layout d-flex align-items-top flex-row">
             <div class="navbar-menu-wrapper d-flex align-items-top">
                 <h1 class="welcome-text">Good Morning, <span class="text-black fw-bold">John Doe</span></h1>
             </div>
         </nav>
-        <!-- partial -->
         <div class="container-fluid page-body-wrapper row col-lg-12">
-
             <div class="content-wrapper">
                 <div class="row">
                     <div class="col-sm-12">
@@ -51,88 +48,26 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <th scope="row">1</th>
-                                                                        <td>Mark</td>
-                                                                        <td>Otto</td>
-                                                                        <td>mdo</td>
-                                                                        <td>mdo</td>
-                                                                        <td class="">
-                                                                            <button type="button" class="btn btn-primary">Edit</button>
-                                                                            <button type="button" class="btn btn-primary">Remove</button>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">2</th>
-                                                                        <td>Jacob</td>
-                                                                        <td>Thornton</td>
-                                                                        <td>fat</td>
-                                                                        <td>mdo</td>
-                                                                        <td class="">
-                                                                            <button type="button" class="btn btn-primary">Edit</button>
-                                                                            <button type="button" class="btn btn-primary">Remove</button>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">1</th>
-                                                                        <td>Mark</td>
-                                                                        <td>Otto</td>
-                                                                        <td>mdo</td>
-                                                                        <td class="">
-                                                                            <button type="button" class="btn btn-primary">Edit</button>
-                                                                            <button type="button" class="btn btn-primary">Remove</button>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">2</th>
-                                                                        <td>Jacob</td>
-                                                                        <td>Thornton</td>
-                                                                        <td>fat</td>
-                                                                        <td class="">
-                                                                            <button type="button" class="btn btn-primary">Edit</button>
-                                                                            <button type="button" class="btn btn-primary">Remove</button>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">1</th>
-                                                                        <td>Mark</td>
-                                                                        <td>Otto</td>
-                                                                        <td>mdo</td>
-                                                                        <td class="">
-                                                                            <button type="button" class="btn btn-primary">Edit</button>
-                                                                            <button type="button" class="btn btn-primary">Remove</button>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">2</th>
-                                                                        <td>Jacob</td>
-                                                                        <td>Thornton</td>
-                                                                        <td>fat</td>
-                                                                        <td class="">
-                                                                            <button type="button" class="btn btn-primary">Edit</button>
-                                                                            <button type="button" class="btn btn-primary">Remove</button>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">1</th>
-                                                                        <td>Mark</td>
-                                                                        <td>Otto</td>
-                                                                        <td>mdo</td>
-                                                                        <td class="">
-                                                                            <button type="button" class="btn btn-primary">Edit</button>
-                                                                            <button type="button" class="btn btn-primary">Remove</button>
-                                                                        </td>
-                                                                    </tr>
-                                                                    <tr>
-                                                                        <th scope="row">2</th>
-                                                                        <td>Jacob</td>
-                                                                        <td>Thornton</td>
-                                                                        <td>fat</td>
-                                                                        <td class="">
-                                                                            <button type="button" class="btn btn-primary">Edit</button>
-                                                                            <button type="button" class="btn btn-primary">Remove</button>
-                                                                        </td>
-                                                                    </tr>
+                                                                    @foreach (var evt in Model.Events)
+                                                                    {
+                                                                        <tr>
+                                                                            <th scope="row">@evt.Id</th>
+                                                                            <td>@evt.Name</td>
+                                                                            <td>@evt.Date.ToString("yyyy-MM-dd")</td>
+                                                                            <td>@evt.Location</td>
+                                                                            <td>@evt.Description</td>
+                                                                            <td>
+                                                                                <form method="post" asp-page-handler="Edit">
+                                                                                    <input type="hidden" name="id" value="@evt.Id" />
+                                                                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                                                                </form>
+                                                                                <form method="post" asp-page-handler="Remove">
+                                                                                    <input type="hidden" name="id" value="@evt.Id" />
+                                                                                    <button type="submit" class="btn btn-primary">Remove</button>
+                                                                                </form>
+                                                                            </td>
+                                                                        </tr>
+                                                                    }
                                                                 </tbody>
                                                             </table>
                                                         </div>
@@ -167,7 +102,9 @@
                                                                 <div class="col-lg-6">
                                                                     <div class="d-flex justify-content-between align-items-center mb-2 mb-sm-0">
                                                                         <div>
-                                                                            <button type="button" class="btn btn-primary">Add an event</button>
+                                                                            <form method="post" asp-page-handler="Add">
+                                                                                <button type="submit" class="btn btn-primary">Add an event</button>
+                                                                            </form>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -184,9 +121,7 @@
                     </div>
                 </div>
             </div>
-            <!-- content-wrapper ends -->
         </div>
-        <!-- page-body-wrapper ends -->
     </div>
 </body>
 <script type="module" src="~/lib/chartjs/chart.umd.js"></script>
