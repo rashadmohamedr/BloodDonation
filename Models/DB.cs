@@ -56,44 +56,55 @@ namespace BloodDonation.Models
             string Q = $"INSERT INTO [User] ([UserId],Name,Email,Password,Phone,DateOfBirth,UserType) VALUES ('{Dict["UserID"]}','{Dict["Name"]}','{Dict["Email"]}','{Dict["Password"]}','{Dict["Phone"]}','{Dict["DateOfBirth"]}','{Dict["UserType"]}');";
             SqlCommand cmd = new SqlCommand(Q, con);
             cmd.ExecuteNonQuery();
-            /*
-             
+            con.Close();
+
+            foreach (KeyValuePair<string, string> property in Dict)
+            {
+                Console.WriteLine($"{property.Key}: {property.Value}");
+            }
             switch (Dict["UserType"])
             {
                 case ("A")://Admin
+                    Dict["AdminID"] = (Int32.Parse(GetColumnCount("Admin")) + 1).ToString();
                     Q = $"INSERT INTO [Admin] ([AdminID],[UserID]) VALUES ('{Dict["AdminID"]}','{Dict["UserID"]}');";
+                    con.Open();
                     cmd = new SqlCommand(Q, con);
                     cmd.ExecuteNonQuery();
                     //redirect to admin_main
                     con.Close();
-                    return ("Pages/Staff/Admin_main", u.UserID.ToString());
+                    return ("/Staff/Admin_main", Dict["UserID"].ToString());
                     break;
                 case ("C")://Coordinator
-                    Q = $"INSERT INTO [Admin] ([AdminID],[UserID]) VALUES ('{Dict["AdminID"]}','{Dict["UserID"]}');";
+                    int CoordinatorID = Int32.Parse(GetColumnCount("Coordinator")) + 1;
+                    Dict["CoordinatorID"] = CoordinatorID.ToString();
+                    Q = $"INSERT INTO [Coordinator] ([CoordinatorID],[UserID]) VALUES ('{Dict["CoordinatorID"]}','{Dict["UserID"]}');"; con.Open();
                     cmd = new SqlCommand(Q, con);
                     cmd.ExecuteNonQuery();
-                    //redirect to Coordinator
+                    //redirect to coordinator_main
                     con.Close();
-                    return ("Pages/Staff/Coordinator_main", u.UserID.ToString());
+                    return ("/Coordinator/Coordinator_main", Dict["UserID"].ToString());
                     break;
                 case ("D")://Donor
-                    Q = $"INSERT INTO [Donor] ([StaffID],[UserID]) VALUES ('{Dict["StaffID"]}','{Dict["UserID"]}');";
+                    int DonorID = Int32.Parse(GetColumnCount("Donor")) + 1;
+                    Dict["DonorID"] = DonorID.ToString();
+                    Q = $"INSERT INTO [Donor] ([DonorID],[UserID]) VALUES ('{Dict["DonorID"]}','{Dict["UserID"]}');"; con.Open();
                     cmd = new SqlCommand(Q, con);
                     cmd.ExecuteNonQuery();
-                    //redirect to Donor
+                    //redirect to donor_main
                     con.Close();
-                    return ("Pages/User/Donor_main", u.UserID.ToString());
+                    return ("/Donor/Donor_main", Dict["UserID"].ToString());
                     break;
                 case ("S")://Staff
-                    Q = $"INSERT INTO [Staff] ([StaffID],[UserID]) VALUES ('{Dict["StaffID"]}','{Dict["UserID"]}');";
+                    int StaffID = Int32.Parse(GetColumnCount("Staff")) + 1;
+                    Dict["StaffID"] = StaffID.ToString();
+                    Q = $"INSERT INTO [Staff] ([StaffID],[UserID]) VALUES ('{Dict["StaffID"]}','{Dict["UserID"]}');"; con.Open();
                     cmd = new SqlCommand(Q, con);
                     cmd.ExecuteNonQuery();
-                    //redirect to Staff
+                    //redirect to staff_main
                     con.Close();
-                    return ("Pages/Staff/Staff_main", u.UserID.ToString());
+                    return ("/Staff/Staff_main", Dict["UserID"].ToString());
                     break;
             }
-            */
             con.Close();
             return ("incorrectData", "");
         }

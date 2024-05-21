@@ -79,7 +79,7 @@ namespace BloodDonation.Pages
             Dictionary<String, String> keyValuePairs = new Dictionary<String, String>();
         }
 
-        public void OnPostSignUp(string Name,
+        public IActionResult OnPostSignUp(string Name,
                                  string BirthdayDate,
                                  string Gender,
                                  string email,
@@ -118,7 +118,12 @@ namespace BloodDonation.Pages
             {
                 Console.WriteLine($"{property.Key}: {property.Value}");
             }
-            dB.AddUserSignUp(properties);
+            (string,string) data=dB.AddUserSignUp(properties);
+            HttpContext.Session.SetString("UserID", data.Item2);
+            Console.WriteLine(data);
+            return RedirectToPage(data.Item1);
+
+
         }
     }
 }

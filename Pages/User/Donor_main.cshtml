@@ -2,3 +2,235 @@
 @model BloodDonation.Pages.User.Donor_mainModel
 @{
 }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Design</title>
+    <style>
+        /* Your existing CSS styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e2dfdf;
+            color: #333;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            font-size: 2em;
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #fff;
+        }
+
+        .add-btn, .save-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ff0076, #ff8e00);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+            .add-btn:hover, .save-btn:hover {
+                background: linear-gradient(45deg, #ff8e00, #ff0076);
+            }
+
+        .section.events-section {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 20px;
+            background: white;
+            position: relative;
+            width: 100%;
+            max-width: 50%;
+            border: 2px solid #ff0076;
+            margin-left: -85px;
+        }
+
+        .section.teams-section {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 20px;
+            background: white;
+            position: relative;
+            width: 100%;
+            max-width: 50%;
+            border: 2px solid #ffa500;
+            margin-left: -85px;
+        }
+
+        .section.experience-section {
+            margin-bottom: 20px;
+            padding: 20px;
+            margin-left: 0px;
+            border-radius: 20px;
+            background: white;
+            position: relative;
+            width: 110%;
+            border: 2px solid #ff0076;
+            margin-left: -85px;
+        }
+
+        .bottom-gif {
+            border-radius: 30px;
+            background: #e0e0e0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            margin-top: 2pc;
+            margin-right: 50pc;
+        }
+
+        .first_image {
+            margin-left: 39pc;
+            width: 582px;
+            margin-top: -164pc;
+        }
+
+        input[type="text"] {
+            border: none; /* Removes border for input fields */
+            outline: none; /* Removes outline when focused */
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="section teams-section">
+            <h2>Teams</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Team ID</th>
+                        <th>Team Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var team in Model.ListTeam)
+                    {
+                        <tr>
+                            <td>@team.TeamID</td>
+                            <td>@team.Name</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="section events-section">
+            <h2>Events</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event ID</th>
+                        <th>Event name</th>
+                        <th>Event date</th>
+                        <th>Location</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var anEvent in Model.ListEvents)
+                    {
+                        <tr>
+                            <td>@anEvent.EventID</td>
+                            <td>@anEvent.Name</td>
+                            <td>@anEvent.EventDate</td>
+                            <td>@anEvent.Location</td>
+                            <td>@anEvent.EventDescription</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="section experience-section">
+            <h2>Experience</h2>
+            <table id="experience-table">
+                <thead>
+                    <tr>
+                        <th>ExperienceID</th>
+                        <th>Name</th>
+                        <th>Rating</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var experience in Model.Listexperiences)
+                    {
+                        <tr>
+                            <td>@experience.ExperienceID</td>
+                            <td>@experience.Name</td>
+                            <td>@experience.Rating</td>
+                            <td>@experience.Description</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <button class="add-btn" onclick="addRow()">Add</button>
+            <button class="save-btn" type="button">Save</button>
+        </div>
+    </div>
+
+    <img class="first_image" src="~/Images/o1.jpg" alt="first_image">
+    <img src="~/Images/o2'.jpg" alt="second_image" style="margin-left: 37pc; width: 619px; margin-top: -107pc;">
+    <img src="~/Images/aa.gif" alt="Bottom GIF" style="height: 404px; display: block; margin: 0 auto;">
+
+    <script>
+        function addRow() {
+            const table = document.getElementById('experience-table'); // Corrected ID to match HTML
+            const tbody = table.getElementsByTagName('tbody')[0];
+            const newRow = tbody.insertRow(tbody.rows.length);
+
+            // Adjusted array length to match the cells being added
+            const cols = ["ExperienceID", "Name", "Rating", "Description"];
+            for (let i = 0; i < cols.length; i++) {
+                const newCell = newRow.insertCell(i);
+                if (i === 0) {
+                    newCell.innerHTML = tbody.rows.length; // Auto-increment ID based on row count
+                } else {
+                    const input = document.createElement("input");
+                    input.type = "text";
+                    input.placeholder = cols[i];
+                    newCell.appendChild(input);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
