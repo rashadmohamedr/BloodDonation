@@ -16,6 +16,8 @@ namespace BloodDonation.Pages
             _logger = logger;
             this.dB = dB;
         }
+
+
         [BindProperty]
         [Required]
         [EmailAddress]

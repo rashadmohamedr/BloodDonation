@@ -126,7 +126,7 @@
 </body>
 @* ///////////////////////////////////////Add//////////////////////////////////////////////////////// *@
 
-
+<form asp-page-handler="Donors" method="post">
 
 <div class="donor_name">
     <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
@@ -448,5 +448,9 @@
     <option value="Not-Eligable">Not-Eligable</option>
 
 </select>
-<a class="btn btn-primary" asp-page="/create">Add Donor</a>
+    <br />
+    <div class="d-button">
+        <input data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Submit" />
+    </div>
+    </form>>
 </html>
