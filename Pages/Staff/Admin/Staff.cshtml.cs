@@ -37,9 +37,9 @@ namespace BloodDonation.Pages.Staff.Admin
 
                 s = new Models.DBClasses.Staff();
 
-                s.StaffID = (int)dt.Rows[i]["staffID"];
-                s.YearsOfExperience = (int)dt.Rows[i]["years_exp"];
-                s.Role = (string)dt.Rows[i]["role"];
+                s.StaffID = (int)dt.Rows[i]["StaffID"];
+                s.YearsOfExperience = (int)dt.Rows[i]["YearsOfExperience"];
+                s.Role = (string)dt.Rows[i]["Role"];
 
 
                 Staff.Add(s);

@@ -39,11 +39,11 @@ namespace BloodDonation.Pages.Staff.Admin
 
                 e = new Models.DBClasses.AnEvent();
 
-                e.EventID = (int)dt.Rows[i]["event_id"];
-                e.EventDate = (string)dt.Rows[i]["event_date"];
-                e.location = (string)dt.Rows[i]["location"];
-                e.Description = (string)dt.Rows[i]["exp_description"];
-                e.Name = (string)dt.Rows[i]["event_name"];
+                e.EventID = (int)dt.Rows[i]["EventID"];
+                e.EventDate = (string)dt.Rows[i]["EventDate"];
+                e.location = (string)dt.Rows[i]["Location"];
+                e.Description = (string)dt.Rows[i]["EventDescription"];
+                e.Name = (string)dt.Rows[i]["Name"];
                
 
                 AnEvent.Add(e);
