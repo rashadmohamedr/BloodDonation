@@ -136,7 +136,7 @@ namespace BloodDonation.Pages.Staff.Admin
         }
 
 
-        public void OnGetEvents()
+        public void OnGet()
         {
 
 
@@ -149,9 +149,9 @@ namespace BloodDonation.Pages.Staff.Admin
                 e = new Models.DBClasses.AnEvent();
 
                 e.EventID = (int)dt.Rows[i]["EventId"];
-                e.EventDate = (string)dt.Rows[i]["Eventate"];
+                e.EventDate = dt.Rows[i]["EventDate"].ToString();
                 e.location = (string)dt.Rows[i]["location"];
-                e.Description = (string)dt.Rows[i]["Description"];
+                e.Description = (string)dt.Rows[i]["EventDescription"];
                 e.Name = (string)dt.Rows[i]["Name"];
                
 

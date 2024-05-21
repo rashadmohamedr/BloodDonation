@@ -68,7 +68,7 @@ namespace BloodDonation.Pages.Staff.Admin
 
 
 
-        public void OnGetDonors()
+        public void OnGet()
         {
 
             donor = "BloodType";

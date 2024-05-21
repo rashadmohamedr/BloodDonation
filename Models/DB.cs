@@ -125,15 +125,15 @@ namespace BloodDonation.Models
                 switch (u.UserType)
                 {
                     case ("A")://Admin
-                        return ("Pages/Staff/Admin_main", u.UserID.ToString());
+                        return ("/Staff/Admin_main", u.UserID.ToString());
                     case ("C")://Coordinator
-                        return ("Pages/Staff/Coordinator_main", u.UserID.ToString());
+                        return ("/Staff/Coordinator_main", u.UserID.ToString());
                     case ("D")://Donor
-                        return ("Pages/User/Donor_main", u.UserID.ToString());
+                        return ("/User/Donor_main", u.UserID.ToString());
                     case ("S")://Staff
-                        return ("Pages/Staff/Staff_main", u.UserID.ToString());
+                        return ("/Staff/Staff_main", u.UserID.ToString());
                     case ("X")://SuperAdmin
-                        return ("Pages/Staff/Admin_main", "S"+u.UserID.ToString());
+                        return ("/Staff/Admin_main", "S"+u.UserID.ToString());
                     
                 }
             }

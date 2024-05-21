@@ -81,7 +81,7 @@ namespace BloodDonation.Pages.Staff.Admin
         [BindProperty]
         public string Donation_interval_years { get; set; }
 
-        public void OnGetStaff()
+        public void OnGet()
         {
 
 
