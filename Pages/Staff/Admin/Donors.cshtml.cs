@@ -100,7 +100,7 @@ namespace BloodDonation.Pages.Staff.Admin
 
 
 
-        public void OnPostDonors(string DonorID, string Name,
+        public IActionResult  OnPostDonors(string DonorID, string Name,
                                  string BirthdayDate,
                                  string Gender,
                                  string email,
@@ -129,12 +129,14 @@ namespace BloodDonation.Pages.Staff.Admin
                  { "Travel", Travel },
                  { "MedicationHistory", MedicationHistory },
                   { "IllnessHistory", IllnessHistory },
-                    { "Donation_interval_days", Donation_interval_days },
+                    { "DonationInterval", Donation_interval_days },
                 { "Donation_interval_months", Donation_interval_months },
                 { "Donation_interval_years", Donation_interval_years },
                 { "Phone", Phone },
-                {"EligibilityStatus",EligibilityStatus },
+                {"EligabilityStatus",EligibilityStatus },
                 {"Weight",Weight },
+                {"TeamID",Weight },
+                {"TeamLeaderID",Weight },
               
 
 
@@ -145,7 +147,7 @@ namespace BloodDonation.Pages.Staff.Admin
                 Console.WriteLine($"{property.Key}: {property.Value}");
             }
             (string, string) data = dB.AddDonor(properties);
-            return ;
+            return RedirectToPage("/Staff/Admin/Donors");
 
 
 

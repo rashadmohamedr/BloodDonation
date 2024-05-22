@@ -252,7 +252,7 @@ namespace BloodDonation.Models
             int UserID = Int32.Parse(GetColumnCount("User")) + 1;
             Dict["UserID"] = UserID.ToString();
             con.Open();
-            string Q = $"INSERT INTO [Donor] ([DonorID], BloodType, Gender, Travel, MedicationHistory, IllnessHistory, DonationInterval, EligabilityStatus, Weight, TeamID, TeamLeaderID, Phone) VALUES ('{Dict["UserID"]}', '{Dict["BloodType"]}', '{Dict["Gender"]}', '{Dict["Travel"]}', '{Dict["MedicationHistory"]}', '{Dict["IllnessHistory"]}', '{Dict["DonationInterval"]}', '{Dict["EligabilityStatus"]}', '{Dict["Weight"]}', '{Dict["TeamID"]}', '{Dict["TeamLeaderID"]}', '{Dict["Phone"]}');";
+            string Q = $"INSERT INTO [Donor] ([DonorID], BloodType, Gender, Travel, MedicationHistory, IllnessHistory, DonationInterval, EligibilityStatus, Weight) VALUES ('{Dict["DonorID"]}', '{Dict["BloodType"]}', '{Dict["Gender"]}', '{Dict["Travel"]}', '{Dict["MedicationHistory"]}', '{Dict["IllnessHistory"]}', '{Dict["DonationInterval"]}', '{Dict["EligabilityStatus"]}', '{Dict["Weight"]}');";
 
             SqlCommand cmd = new SqlCommand(Q, con);
             cmd.ExecuteNonQuery();
