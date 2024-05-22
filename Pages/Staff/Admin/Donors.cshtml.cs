@@ -101,13 +101,13 @@ namespace BloodDonation.Pages.Staff.Admin
 
 
         public IActionResult OnPostDonors(string Name,
+                                    string DonorID,
                                  string BirthdayDate,
                                  string Gender,
                                  string email,
                                  string Password,
                                  string Phone,
                                  string UserType,
-                                 string Role,
                                  string BloodType,
                                  string Travel,
                                  string MedicationHistory,
