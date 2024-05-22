@@ -23,7 +23,7 @@ namespace BloodDonation.Pages.Staff
                 labels: ['Admin', 'Coordinator', 'Donors', 'Teams', 'Events', 'Experiences'],
                 datasets: [{
                     label: '# of',
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: [GetColumnCount(Admin), GetColumnCount(Coordinator), GetColumnCount(Donor), GetColumnCount(Staff), GetColumnCount(Team)],
                     backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
