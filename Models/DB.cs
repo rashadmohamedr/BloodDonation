@@ -139,6 +139,14 @@ namespace BloodDonation.Models
             }
             return ("UncorrectPassword",""); 
         }
+        public void changePassword(string newPassword,string userEmail)
+        {
+            con.Open();
+            string Q = "UPDATE User SET Password=\'" + newPassword + "\' WHERE Email = \'" + userEmail + "\';";
+            SqlCommand cmd = new SqlCommand(Q, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
 
         /*
         public Dictionary<string, int> getFavouriteCodeEditors()
