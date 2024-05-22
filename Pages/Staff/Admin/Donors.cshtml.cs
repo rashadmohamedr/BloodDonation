@@ -120,8 +120,7 @@ namespace BloodDonation.Pages.Staff.Admin
 
             Dictionary<string, string> properties = new Dictionary<string, string>()
             {
-                { "Name", Name },
-                { "Name", Name },
+                { "DonorID", DonorID },
                 { "DateOfBirth", BirthdayDate },
                 { "Gender", Gender },
                 { "Email", email },
