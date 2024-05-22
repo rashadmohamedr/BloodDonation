@@ -26,12 +26,11 @@ namespace BloodDonation.Pages
 
         public void OnGet()
         {
-
-            Console.WriteLine("email" + "pass");
         }
         public IActionResult OnPostLogin(string email,string pass)
         {
-             (string,string) data=dB.SignIn(email, pass);
+            (string,string) data=dB.SignIn(email, pass);
+            HttpContext.Session.Clear();
             HttpContext.Session.SetString("UserID",data.Item2);
             Console.WriteLine(data);
             return RedirectToPage(data.Item1);

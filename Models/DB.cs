@@ -125,14 +125,19 @@ namespace BloodDonation.Models
                 switch (u.UserType)
                 {
                     case ("A")://Admin
+                    case ("a")://Admin
                         return ("/Staff/Admin_main", u.UserID.ToString());
                     case ("C")://Coordinator
+                    case ("c")://Coordinator
                         return ("/Staff/Coordinator_main", u.UserID.ToString());
                     case ("D")://Donor
+                    case ("d")://Donor
                         return ("/User/Donor_main", u.UserID.ToString());
                     case ("S")://Staff
+                    case ("s")://Staff
                         return ("/Staff/Staff_main", u.UserID.ToString());
                     case ("X")://SuperAdmin
+                    case ("x")://SuperAdmin
                         return ("/Staff/Admin_main", "S"+u.UserID.ToString());
                     
                 }
@@ -142,7 +147,7 @@ namespace BloodDonation.Models
         public void changePassword(string newPassword,string userEmail)
         {
             con.Open();
-            string Q = "UPDATE User SET Password=\'" + newPassword + "\' WHERE Email = \'" + userEmail + "\';";
+            string Q = "UPDATE [User] SET Password=\'" + newPassword + "\' WHERE Email = \'" + userEmail + "\';";
             SqlCommand cmd = new SqlCommand(Q, con);
             cmd.ExecuteNonQuery();
             con.Close();

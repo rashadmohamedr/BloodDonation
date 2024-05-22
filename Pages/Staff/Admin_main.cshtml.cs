@@ -13,6 +13,7 @@ namespace BloodDonation.Pages.Staff
         public string ChartJson { get; set; }
         public void OnGet()
         {
+            if (HttpContext.Session.GetString("UserID").ToCharArray()[0] =='A') { RedirectToPage("Index"); }
             var chartData = @"
         {
             type: 'bar',
