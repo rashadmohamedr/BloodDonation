@@ -89,7 +89,7 @@ namespace BloodDonation.Pages.Staff.Admin
                 d.IllnessHistory = (string)dt.Rows[i]["IllnessHistory"];
                 d.DonationInterval = (string)dt.Rows[i]["DonationInterval"];
                 d.EligibilityStatus = (string)dt.Rows[i]["EligibilityStatus"];
-
+              
 
                 Donor.Add(d);
 
@@ -110,10 +110,13 @@ namespace BloodDonation.Pages.Staff.Admin
                                  string BloodType,
                                  string Travel,
                                  string MedicationHistory,
-                                 string weight,
+                                 string  IllnessHistory,
+                                 string Weight,
+                                 string EligibilityStatus,
                                  string Donation_interval_days,
                                  string Donation_interval_months,
                                  string Donation_interval_years)
+                                    
         {
 
 
@@ -121,20 +124,20 @@ namespace BloodDonation.Pages.Staff.Admin
             Dictionary<string, string> properties = new Dictionary<string, string>()
             {
                 { "DonorID", DonorID },
-                { "DateOfBirth", BirthdayDate },
-                { "Gender", Gender },
-                { "Email", email },
-                { "Password", Password },
-                { "Phone", Phone },
-                { "UserType", UserType },
-                { "Role", Role },
                 { "BloodType", BloodType },
-                { "Travel", Travel },
-                { "MedicationHistory", MedicationHistory },
-                { "Weight", weight },
-                { "Donation_interval_days", Donation_interval_days },
+                 { "Gender", Gender },
+                 { "Travel", Travel },
+                 { "MedicationHistory", MedicationHistory },
+                  { "IllnessHistory", IllnessHistory },
+                    { "Donation_interval_days", Donation_interval_days },
                 { "Donation_interval_months", Donation_interval_months },
-                { "Donation_interval_years", Donation_interval_years }
+                { "Donation_interval_years", Donation_interval_years },
+                { "Phone", Phone },
+                {"EligibilityStatus",EligibilityStatus },
+                {"Weight",Weight },
+              
+
+
             };
 
             foreach (KeyValuePair<string, string> property in properties)
