@@ -28,8 +28,7 @@ namespace BloodDonation.Pages.Staff.Admin
         [BindProperty]
         public string UserType { get; set; }
 
-        [BindProperty]
-        public string Role { get; set; }
+       
 
         [BindProperty]
         public string BloodType { get; set; }

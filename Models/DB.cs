@@ -1,4 +1,5 @@
 ﻿using BloodDonation.Models.DBClasses;
+using Microsoft.Extensions.Logging;
 using System.Data;
 using System.Data.SqlClient;
 using System.Numerics;
@@ -298,6 +299,59 @@ namespace BloodDonation.Models
             return ("incorrectData", "");
         }
 
+
+
+        public (string, string) AddStaff(Dictionary<String, string> Dict)
+        {
+            int UserID = Int32.Parse(GetColumnCount("User")) + 1;
+            Dict["UserID"] = UserID.ToString();
+            con.Open();
+            string Q = $"INSERT INTO [Staff] ([StaffID],[UserID],[Role]) VALUES ('{Dict["StaffID"]}','{Dict["UserID"]}',),'{Dict["Role"]}');";
+
+            SqlCommand cmd = new SqlCommand(Q, con);
+            cmd.ExecuteNonQuery();
+
+
+
+            con.Close();
+            return ("incorrectData", "");
+        }
+
+
+        public (string, string) AddEvent(Dictionary<String, string> Dict)
+        {
+            int UserID = Int32.Parse(GetColumnCount("User")) + 1;
+            Dict["UserID"] = UserID.ToString();
+            con.Open();
+            string Q = $"INSERT INTO [AnEvent] ([EventID],[Name],[Description],[Location],[EventDate]) VALUES ('{Dict["EventID"]}','{Dict["Name"]}',),'{Dict["Description"]}','{Dict["Location"]}','{Dict["EventDate"]}');";
+
+            SqlCommand cmd = new SqlCommand(Q, con);
+            cmd.ExecuteNonQuery();
+
+
+
+            con.Close();
+            return ("incorrectData", "");
+        }
+
+        public (string, string) AddAdmin(Dictionary<String, string> Dict)
+        {
+            int UserID = Int32.Parse(GetColumnCount("User")) + 1;
+            Dict["UserID"] = UserID.ToString();
+            con.Open();
+            string Q = $"INSERT INTO [Admin] ([AdminID],[UserID]) VALUES ('{Dict["AdminID"]}','{Dict["UserID"]}');";
+
+            SqlCommand cmd = new SqlCommand(Q, con);
+            cmd.ExecuteNonQuery();
+
+
+
+            con.Close();
+            return ("incorrectData", "");
+        }
+
+
+
     }
-    }
+}
 

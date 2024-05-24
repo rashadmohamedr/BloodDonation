@@ -113,39 +113,17 @@ namespace BloodDonation.Pages.Staff.Admin
 
 
 
-        public IActionResult OnPostStaff(string Name,
-                                 string BirthdayDate,
-                                 string Gender,
-                                 string email,
-                                 string Password,
-                                 string Phone,
-                                 string UserType,
-                                 string Role,
-                                 string BloodType,
-                                 string Travel,
-                                 string MedicationHistory,
-                                 string weight,
-                                 string Donation_interval_days,
-                                 string Donation_interval_months,
-                                 string Donation_interval_years)
+        public IActionResult OnPostStaff(
+                                    string Role,
+                                 string UserType
+                                )
         {
             Dictionary<string, string> properties = new Dictionary<string, string>()
             {
-                { "Name", Name },
-                { "DateOfBirth", BirthdayDate },
-                { "Gender", Gender },
-                { "Email", email },
-                { "Password", Password },
-                { "Phone", Phone },
+                
                 { "UserType", UserType },
-                { "Role", Role },
-                { "BloodType", BloodType },
-                { "Travel", Travel },
-                { "MedicationHistory", MedicationHistory },
-                { "Weight", weight },
-                { "Donation_interval_days", Donation_interval_days },
-                { "Donation_interval_months", Donation_interval_months },
-                { "Donation_interval_years", Donation_interval_years }
+                 { "Role", Role }
+
             };
 
             foreach (KeyValuePair<string, string> property in properties)
