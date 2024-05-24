@@ -51,7 +51,7 @@ namespace BloodDonation.Models
         }
         public (string, string) AddUserSignUp(Dictionary<String, string> Dict)
         {
-            int UserID = Int32.Parse(GetColumnCount("User"))+1;
+            int UserID = GetColumnCount("User")+1;
             Dict["UserID"] = UserID.ToString() ;
             con.Open();
             string Q = $"INSERT INTO [User] ([UserId],Name,Email,Password,Phone,DateOfBirth,UserType) VALUES ('{Dict["UserID"]}','{Dict["Name"]}','{Dict["Email"]}','{Dict["Password"]}','{Dict["Phone"]}','{Dict["DateOfBirth"]}','{Dict["UserType"]}');";
@@ -66,7 +66,7 @@ namespace BloodDonation.Models
             switch (Dict["UserType"])
             {
                 case ("A")://Admin
-                    Dict["AdminID"] = (Int32.Parse(GetColumnCount("Admin")) + 1).ToString();
+                    Dict["AdminID"] = (GetColumnCount("Admin") + 1).ToString();
                     Q = $"INSERT INTO [Admin] ([AdminID],[UserID]) VALUES ('{Dict["AdminID"]}','{Dict["UserID"]}');";
                     con.Open();
                     cmd = new SqlCommand(Q, con);
@@ -76,7 +76,7 @@ namespace BloodDonation.Models
                     return ("/Staff/Admin_main", Dict["UserID"].ToString());
                     break;
                 case ("C")://Coordinator
-                    int CoordinatorID = Int32.Parse(GetColumnCount("Coordinator")) + 1;
+                    int CoordinatorID = GetColumnCount("Coordinator") + 1;
                     Dict["CoordinatorID"] = CoordinatorID.ToString();
                     Q = $"INSERT INTO [Coordinator] ([CoordinatorID],[UserID]) VALUES ('{Dict["CoordinatorID"]}','{Dict["UserID"]}');"; con.Open();
                     cmd = new SqlCommand(Q, con);
@@ -86,7 +86,7 @@ namespace BloodDonation.Models
                     return ("/Coordinator/Coordinator_main", Dict["UserID"].ToString());
                     break;
                 case ("D")://Donor
-                    int DonorID = Int32.Parse(GetColumnCount("Donor")) + 1;
+                    int DonorID = GetColumnCount("Donor") + 1;
                     Dict["DonorID"] = DonorID.ToString();
                     Q = $"INSERT INTO [Donor] ([DonorID],[UserID]) VALUES ('{Dict["DonorID"]}','{Dict["UserID"]}');"; con.Open();
                     cmd = new SqlCommand(Q, con);
@@ -96,7 +96,7 @@ namespace BloodDonation.Models
                     return ("/Donor/Donor_main", Dict["UserID"].ToString());
                     break;
                 case ("S")://Staff
-                    int StaffID = Int32.Parse(GetColumnCount("Staff")) + 1;
+                    int StaffID = GetColumnCount("Staff")   + 1;
                     Dict["StaffID"] = StaffID.ToString();
                     Q = $"INSERT INTO [Staff] ([StaffID],[UserID]) VALUES ('{Dict["StaffID"]}','{Dict["UserID"]}');"; con.Open();
                     cmd = new SqlCommand(Q, con);
@@ -204,7 +204,7 @@ namespace BloodDonation.Models
 
 
 
-        public string GetColumnCount(string tableName)
+        public int GetColumnCount(string tableName)
         {
 
             con.Open();
@@ -222,7 +222,8 @@ namespace BloodDonation.Models
               
             };
             con.Close();
-            return result;
+            
+            return Int32.Parse(result) ;
             
 
         }
@@ -250,7 +251,7 @@ namespace BloodDonation.Models
 
         public (string, string) AddDonor(Dictionary<String, string> Dict)
         {
-            int UserID = Int32.Parse(GetColumnCount("User")) + 1;
+            int UserID = GetColumnCount("User") + 1;
             Dict["UserID"] = UserID.ToString();
             con.Open();
             string Q = $"INSERT INTO [Donor] ([DonorID], BloodType, Gender, Travel, MedicationHistory, IllnessHistory, DonationInterval, EligibilityStatus, Weight) VALUES ('{Dict["DonorID"]}', '{Dict["BloodType"]}', '{Dict["Gender"]}', '{Dict["Travel"]}', '{Dict["MedicationHistory"]}', '{Dict["IllnessHistory"]}', '{Dict["DonationInterval"]}', '{Dict["EligabilityStatus"]}', '{Dict["Weight"]}');";
